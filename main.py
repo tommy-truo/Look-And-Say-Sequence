@@ -37,30 +37,32 @@ def get_n_terms():
 
 def next_num(start_num, n):
     for i in range(1, n):
-            results = []
+        results = []
 
-            repeat_counter = 1
+        repeat_counter = 1
 
-            for num in range(0, len(start_num)):
-                try:
-                    if start_num[num] == start_num[num + 1]:
-                        repeat_counter += 1
+        for num in range(0, len(start_num)): 
+            try:
+                if start_num[num] == start_num[num + 1]:
+                    repeat_counter += 1
 
-                    else:
-                        results.append(str(repeat_counter))
-
-                        results.append(start_num[num])
-
-                except IndexError:
+                else:
                     results.append(str(repeat_counter))
 
                     results.append(start_num[num])
 
-            results = "".join(results)
+                    repeat_counter = 1
 
-            print(results)
+            except IndexError:
+                results.append(str(repeat_counter))
 
-            start_num = results
+                results.append(start_num[num])
+
+        results = "".join(results)
+
+        print("{}\n".format(results))
+
+        start_num = results
 
 
 def look_say_seq():
@@ -76,7 +78,7 @@ def look_say_seq():
         print("Starting at {}, the 1 term in the sequence is: {}".format(start_num, start_num))
 
     else:
-        print("Starting at {}, the {} terms in the sequence are:\n{}".format(start_num, n, start_num))
+        print("Starting at {}, the {} terms in the sequence are:\n\n{}\n".format(start_num, n, start_num))
 
         next_num(start_num, n)
 
